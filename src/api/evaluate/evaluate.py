@@ -355,16 +355,29 @@ def evaluate_image(project_scope, image_path):
     scores = [{key: value} for key, value in rows.items() if 'score' in key]
     scores_df = pd.DataFrame.from_dict(scores)
     mean_scores_df = scores_df.mean()
-
     print("Image Evaluation Content Safety Scores:\n")
+
+    # Debug: Print all available columns in results_df
+    # print("Available columns in results_df:")
+    # if not results_df.empty:
+    #     print(results_df.columns.tolist())
+    # else:
+    #     print("results_df is empty")
+
     print(mean_scores_df)
     print('')
     print("Protected Material Prescence:\n")
     if results_df.empty:
         protected_materials_evals = mean_scores_df
     else:
-        protected_materials_evals = results_df[['protected_material.fictional_characters_label', 'protected_material.logos_and_brands_label', 'protected_material.artwork_label']]
-        protected_materials_evals = protected_materials_evals.mean()
+        # Find all protected material columns that exist in the DataFrame
+        protected_material_columns = [col for col in results_df.columns if 'protected_material' in col]
+        if protected_material_columns:
+            protected_materials_evals = results_df[protected_material_columns]
+            protected_materials_evals = protected_materials_evals.mean()
+        else:
+            print("No protected material columns found in results")
+            protected_materials_evals = pd.Series({"No protected material data available": 0})
         
     print(protected_materials_evals)
 
