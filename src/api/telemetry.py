@@ -28,6 +28,7 @@ def trace_span(name: str):
 def setup_telemetry(app: FastAPI):
     settings.tracing_implementation = "OpenTelemetry"
     local_tracing_enabled=os.getenv("LOCAL_TRACING_ENABLED")
+    # local_tracing_enabled = "True"
     otel_exporter_endpoint = os.getenv("OTEL_EXPORTER_OTLP_ENDPOINT")
    
     # Get the connection string from the environment variables
