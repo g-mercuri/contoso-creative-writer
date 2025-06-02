@@ -16,9 +16,7 @@ const ImageUpload = () => {
         }
     };
 
-    const url = `${
-        image_endpoint.endsWith("/") ? image_endpoint : image_endpoint + "/"
-      }api/upload-image`;
+    const url = image_endpoint
 
     const handleUpload = async () => {
         if (!selectedFile) return;
