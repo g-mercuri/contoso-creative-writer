@@ -8,7 +8,7 @@ model:
   configuration:
     type: azure_openai
     azure_deployment: gpt-4
-    api_version: 2024-08-01-preview
+    api_version: 2024-10-21
   parameters:
     max_tokens: 1500
 sample:

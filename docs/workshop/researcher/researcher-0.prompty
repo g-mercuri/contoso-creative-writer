@@ -10,7 +10,7 @@ model:
   configuration: 
     type: azure_openai
     azure_deployment: gpt-4
-    api_version: 2024-08-01-preview
+    api_version: 2024-10-21
 sample:
   instructions: Can you generate queries to find the latest winter camping trends? Use 'en-US' as the market code. 
 ---

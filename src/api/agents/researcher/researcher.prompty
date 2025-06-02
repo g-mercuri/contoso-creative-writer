@@ -9,7 +9,7 @@ model:
   api: chat
   configuration: 
     type: azure_openai
-    api_version: 2024-08-01-preview
+    api_version: 2024-10-21
     azure_deployment: gpt-4
   parameters:
     tools: ${file:functions.json}
